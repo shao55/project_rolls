@@ -8,13 +8,12 @@ window.addEventListener("click", function (event) {
         const counter_wrapper = event.target.closest(".counter-wrapper");
         // Находим див с числом счетчика
         counter = counter_wrapper.querySelector("[data-counter]");
-    }
+    };
         // Проверяем, является ли элемент кнопкой Плюс
         if (event.target.dataset.action === "plus") {
         // Изменяем текст в счётчике увеличивая его на 1
             counter.innerText = ++counter.innerText;
         };
-
         // Проверяем, является ли элемент кнопкой Минус
         if (event.target.dataset.action === "minus") {
             // Проверяем чтобы счётчик был больше 1
@@ -27,6 +26,13 @@ window.addEventListener("click", function (event) {
                 event.target.closest(".cart-item").remove();
                 // Функция отображения статуса корзины - Пустая / Полная
 		        toggle_cart_status();
+                // Пересчет общей стоимости товаров в корзине
+                calc_cart_price_and_delivery ()
             };
+        };
+        // Проверяем клик на + или - внутри корзины
+        if (event.target.hasAttribute("data-action") && event.target.closest(".cart-wrapper")) {
+            // Пересчет общей стоимости товаров в корзине
+            calc_cart_price_and_delivery ()
         };
 });

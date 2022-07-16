@@ -53,5 +53,7 @@ window.addEventListener("click", function (event) {
         card.querySelector("[data-counter]").innerText = "1";
 		// Функция отображения статуса корзины - Пустая / Полная
 		toggle_cart_status();
+		// Пересчет общей стоимости товаров в корзине
+		calc_cart_price_and_delivery ();
     };
 });
